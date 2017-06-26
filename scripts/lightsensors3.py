@@ -44,4 +44,4 @@ if __name__ == '__main__':
 
 		rate.sleep()
 
-#rospy.init_node('lightsensors')
+rospy.init_node('lightsensors')
