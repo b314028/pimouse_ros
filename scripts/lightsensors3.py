@@ -43,5 +43,3 @@ if __name__ == '__main__':
 			rate = rospy.Rate(freq)
 
 		rate.sleep()
-
-rospy.init_node('lightsensors')
