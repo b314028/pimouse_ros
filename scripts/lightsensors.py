@@ -9,7 +9,7 @@ def get_freq():
 		if f <= 0.0:
 			raise Exception()
 	except:
-		rospy.logger("value error: lightsensors_freq")
+		rospy.logerr("value error: lightsensors_freq")
 		sys.exit(1)
 
 	return f
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 		try:
 			with open(devfile,'r') as f:
 				data = f.readline().split()
-				data = [ int(e) for e in data]
+				data = [ int(e) for e in data ]
 				d = LightSensorValues()
 				d.right_forward = data[0]
 				d.right_side = data[1]
@@ -34,8 +34,8 @@ if __name__ == '__main__':
 				d.sum_all = sum(data)
 				d.sum_forward = data[0] + data[3]
 				pub.publish(d)
-		except:
-			rospy.logger("cannot wright to " + devfile)
+		except IOError:
+			rospy.logerr("cannot write to " + devfile)
 
 		f = get_freq()
 		if f != freq:
